@@ -1,13 +1,444 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+Luxury Wedding Invitation - Global Styles
+========================================================= */
+
+:root {
+color-scheme: light;
+
+--font-display: 'Cormorant Garamond', serif;
+--font-editorial: 'Playfair Display', serif;
+--font-sans: 'DM Sans', sans-serif;
+
+--color-ivory: #fbf6ee;
+--color-cream: #f3e8d8;
+--color-maroon: #681c2c;
+--color-burgundy: #49111e;
+--color-gold: #b58a4a;
+--color-gold-light: #d4b477;
+--color-ink: #2e2020;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* =========================================================
+Base
+========================================================= */
+
+html {
+scroll-behavior: smooth;
+scroll-padding-top: 80px;
+}
+
+body {
+margin: 0;
+min-width: 320px;
+background-color: var(--color-ivory);
+color: var(--color-ink);
+font-family: var(--font-sans);
+overflow-x: hidden;
+-webkit-font-smoothing: antialiased;
+text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+  }
+
+img {
+max-width: 100%;
+display: block;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+-webkit-tap-highlight-color: transparent;
+}
+
+button {
+font-family: inherit;
+}
+
+a {
+color: inherit;
+text-decoration: none;
+}
+
+/* =========================================================
+Selection & Focus
+========================================================= */
+
+::selection {
+background: var(--color-gold);
+color: #fffaf3;
+}
+
+:focus-visible {
+outline: 2px solid var(--color-gold);
+outline-offset: 4px;
+}
+
+/* =========================================================
+Typography
+========================================================= */
+
+.font-display {
+font-family: var(--font-display);
+}
+
+.font-editorial {
+font-family: var(--font-editorial);
+}
+
+.font-sans {
+font-family: var(--font-sans);
+}
+
+/* =========================================================
+Decorative Ornament
+========================================================= */
+
+.ornament {
+position: relative;
+display: inline-block;
+}
+
+.ornament::before,
+.ornament::after {
+content: '✦';
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+color: var(--color-gold);
+font-size: 0.7rem;
+line-height: 1;
+}
+
+.ornament::before {
+left: -1.5rem;
+}
+
+.ornament::after {
+right: -1.5rem;
+}
+
+/* =========================================================
+Gold Divider
+========================================================= */
+
+.gold-line {
+width: 100%;
+height: 1px;
+background: linear-gradient(
+90deg,
+transparent,
+var(--color-gold),
+transparent
+);
+}
+
+/* =========================================================
+Decorative Floral Pattern
+========================================================= */
+
+.floral-pattern {
+background-image:
+radial-gradient(
+circle at 10% 20%,
+rgba(181, 138, 74, 0.12) 0 1px,
+transparent 1.5px
+),
+radial-gradient(
+circle at 90% 80%,
+rgba(104, 28, 44, 0.07) 0 1px,
+transparent 1.5px
+);
+
+background-size:
+34px 34px,
+42px 42px;
+}
+
+/* =========================================================
+Luxury Paper Texture
+========================================================= */
+
+.noise {
+position: relative;
+}
+
+.noise::after {
+content: '';
+position: absolute;
+inset: 0;
+z-index: 10;
+pointer-events: none;
+opacity: 0.025;
+
+background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+/* =========================================================
+Elegant Glass Effect
+========================================================= */
+
+.glass {
+background: rgba(255, 250, 243, 0.65);
+backdrop-filter: blur(14px);
+-webkit-backdrop-filter: blur(14px);
+border: 1px solid rgba(181, 138, 74, 0.18);
+}
+
+.glass-dark {
+background: rgba(73, 17, 30, 0.72);
+backdrop-filter: blur(14px);
+-webkit-backdrop-filter: blur(14px);
+border: 1px solid rgba(212, 180, 119, 0.2);
+}
+
+/* =========================================================
+Gold Border
+========================================================= */
+
+.gold-border {
+border: 1px solid rgba(181, 138, 74, 0.55);
+}
+
+.gold-border-soft {
+border: 1px solid rgba(181, 138, 74, 0.22);
+}
+
+/* =========================================================
+Decorative Corner
+========================================================= */
+
+.corner-decoration {
+position: relative;
+}
+
+.corner-decoration::before,
+.corner-decoration::after {
+content: '';
+position: absolute;
+width: 36px;
+height: 36px;
+border-color: rgba(181, 138, 74, 0.45);
+pointer-events: none;
+}
+
+.corner-decoration::before {
+top: 12px;
+left: 12px;
+border-top: 1px solid;
+border-left: 1px solid;
+}
+
+.corner-decoration::after {
+right: 12px;
+bottom: 12px;
+border-right: 1px solid;
+border-bottom: 1px solid;
+}
+
+/* =========================================================
+Scrollbar
+========================================================= */
+
+::-webkit-scrollbar {
+width: 8px;
+}
+
+::-webkit-scrollbar-track {
+background: var(--color-ivory);
+}
+
+::-webkit-scrollbar-thumb {
+background: rgba(104, 28, 44, 0.35);
+border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: var(--color-maroon);
+}
+
+/* Firefox */
+
+html {
+scrollbar-width: thin;
+scrollbar-color: rgba(104, 28, 44, 0.35) var(--color-ivory);
+}
+
+/* =========================================================
+Image & Gallery Effects
+========================================================= */
+
+.gallery-image {
+transition:
+transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+filter 500ms ease;
+}
+
+.gallery-card:hover .gallery-image {
+transform: scale(1.05);
+}
+
+.gallery-card:hover {
+box-shadow:
+0 20px 45px rgba(73, 17, 30, 0.12),
+0 4px 15px rgba(181, 138, 74, 0.08);
+}
+
+/* =========================================================
+Elegant Button
+========================================================= */
+
+.btn-gold {
+position: relative;
+overflow: hidden;
+background: var(--color-gold);
+color: #fffaf3;
+transition:
+transform 300ms ease,
+box-shadow 300ms ease,
+background-color 300ms ease;
+}
+
+.btn-gold:hover {
+background: #a47b3f;
+transform: translateY(-2px);
+box-shadow: 0 12px 30px rgba(181, 138, 74, 0.25);
+}
+
+.btn-gold:active {
+transform: translateY(0);
+}
+
+/* =========================================================
+Hero Decorative Glow
+========================================================= */
+
+.hero-glow {
+background:
+radial-gradient(
+circle at 50% 40%,
+rgba(181, 138, 74, 0.12),
+transparent 38%
+),
+radial-gradient(
+circle at 20% 80%,
+rgba(104, 28, 44, 0.08),
+transparent 32%
+);
+}
+
+/* =========================================================
+Floating Petal
+========================================================= */
+
+.petal {
+position: absolute;
+pointer-events: none;
+user-select: none;
+will-change: transform;
+}
+
+/* =========================================================
+Countdown
+========================================================= */
+
+.countdown-card {
+background: rgba(255, 250, 243, 0.72);
+border: 1px solid rgba(181, 138, 74, 0.3);
+box-shadow:
+0 15px 40px rgba(73, 17, 30, 0.06),
+inset 0 0 30px rgba(181, 138, 74, 0.025);
+}
+
+/* =========================================================
+Form Inputs
+========================================================= */
+
+.wedding-input {
+width: 100%;
+border: 1px solid rgba(181, 138, 74, 0.25);
+background: rgba(255, 250, 243, 0.7);
+color: var(--color-ink);
+border-radius: 0.75rem;
+padding: 0.8rem 1rem;
+outline: none;
+transition:
+border-color 250ms ease,
+box-shadow 250ms ease,
+background-color 250ms ease;
+}
+
+.wedding-input::placeholder {
+color: rgba(46, 32, 32, 0.42);
+}
+
+.wedding-input:hover {
+border-color: rgba(181, 138, 74, 0.45);
+}
+
+.wedding-input:focus {
+border-color: var(--color-gold);
+background: #fffaf3;
+box-shadow: 0 0 0 3px rgba(181, 138, 74, 0.1);
+}
+
+/* =========================================================
+Mobile Navigation
+========================================================= */
+
+.mobile-menu {
+overscroll-behavior: contain;
+}
+
+/* =========================================================
+Reduced Motion
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+html {
+scroll-behavior: auto !important;
+}
+
+*,
+*::before,
+*::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+scroll-behavior: auto !important;
+}
+
+.gallery-card:hover .gallery-image {
+transform: none;
+}
+}
+
+/* =========================================================
+Small Screens
+========================================================= */
+
+@media (max-width: 640px) {
+.ornament::before {
+left: -1rem;
+}
+
+.ornament::after {
+right: -1rem;
+}
+
+.corner-decoration::before,
+.corner-decoration::after {
+width: 24px;
+height: 24px;
+}
 }
